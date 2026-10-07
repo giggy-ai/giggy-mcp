@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.giggy-ai/giggy-mcp",
+  "title": "Giggy MCP",
+  "description": "Use Giggy text-to-speech from MCP-compatible AI agents and coding tools.",
+  "websiteUrl": "https://giggy.ai/docs/speech-api",
+  "repository": {
+    "url": "https://github.com/giggy-ai/giggy-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://giggy.ai/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer Giggy API key, for example: Bearer giggy_sk_...",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

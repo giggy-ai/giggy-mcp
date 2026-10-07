@@ -21,9 +21,14 @@ jobs:
           bash -n examples/list-tools.sh
           bash -n examples/list-voices.sh
 
-      - name: Validate Claude Code JSON
+      - name: Validate MCP client JSON
         run: |
           python -m json.tool examples/claude-code.mcp.json > /dev/null
+          python -m json.tool examples/cursor.mcp.json > /dev/null
+          python -m json.tool examples/vscode.mcp.json > /dev/null
+          python -m json.tool examples/cline.mcp.json > /dev/null
+          python -m json.tool examples/windsurf.mcp.json > /dev/null
+          python -m json.tool server.json > /dev/null
 
       - name: Verify scripts are executable
         run: |

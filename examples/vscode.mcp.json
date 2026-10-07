@@ -1,0 +1,19 @@
+{
+  "servers": {
+    "giggy-speech": {
+      "type": "http",
+      "url": "https://giggy.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:giggy-api-key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "giggy-api-key",
+      "description": "Giggy API key",
+      "password": true
+    }
+  ]
+}
