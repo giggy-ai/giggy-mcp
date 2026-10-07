@@ -24,7 +24,7 @@ A public registry listing, plugin submission, and approved plugin publication ar
 
 ## Quick setup
 
-### Codex
+### Use Giggy MCP with Codex
 
 Set `GIGGY_API_KEY` in your environment, then add to `~/.codex/config.toml`:
 
@@ -34,7 +34,7 @@ url = "https://giggy.ai/mcp"
 bearer_token_env_var = "GIGGY_API_KEY"
 ```
 
-### Claude Code
+### Use Giggy MCP with Claude Code
 
 Set `GIGGY_API_KEY`, then configure:
 
@@ -112,7 +112,7 @@ The MCP server may expose other Giggy tools outside the speech scope of this rep
 
 Do not resubmit a new generation while polling an existing generation.
 
-## Codex
+## Use Giggy MCP with Codex
 
 Set:
 
@@ -144,7 +144,7 @@ Verify:
 codex mcp list
 ```
 
-## Claude Code
+## Use Giggy MCP with Claude Code
 
 Set:
 
