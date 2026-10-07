@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "giggy-speech",
+  "version": "1.0.0",
+  "description": "Giggy text-to-speech tools for AI coding agents and voice-enabled products.",
+  "author": { "name": "Giggy", "url": "https://giggy.ai" },
+  "homepage": "https://giggy.ai/docs/speech-api",
+  "repository": "https://github.com/GRQDigitalCapital/giggy-mcp",
+  "license": "ISC",
+  "keywords": ["text-to-speech", "tts", "voice-ai", "voice-agents", "speech-generation", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Giggy Speech",
+        "shortDescription": "Text-to-speech for agents",
+        "longDescription": "Use Giggy text-to-speech from AI agents and developer workflows. Discover available voices, generate speech using supported Giggy modes, and retrieve completed generation results. A Giggy account and authorized API access are required. Speech generation may incur usage charges.",
+        "developerName": "Giggy",
+        "category": "Developer Tools",
+        "capabilities": ["Discover available speech voices", "Generate text-to-speech audio", "Retrieve speech generation results"],
+        "websiteURL": "https://giggy.ai",
+        "supportURL": "https://github.com/GRQDigitalCapital/giggy-mcp/issues",
+        "privacyPolicyURL": "https://giggy.ai/privacy",
+        "termsOfServiceURL": "https://giggy.ai/terms",
+        "defaultPrompt": ["Find available voices for a voice assistant.", "Generate a short speech sample with Giggy.", "Check the status of my Giggy speech generation."]
+      }
+    }
+  }
+}

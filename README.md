@@ -6,6 +6,51 @@ Giggy MCP is a remote Streamable HTTP Model Context Protocol (MCP) server for us
 
 It provides Giggy speech tools to Codex, Claude Code, Cursor, VS Code, Cline, Windsurf-compatible clients, and other MCP clients.
 
+## MCP registry and plugin directories
+
+Giggy's remote speech MCP endpoint is:
+
+`https://giggy.ai/mcp`
+
+This repository contains the publication artifacts for:
+
+- Official MCP Registry: [`server.json`](server.json)
+- OpenAI / Codex: [`openai-plugin/`](openai-plugin/)
+- Claude Code: [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json)
+
+See [directory submission status and requirements](docs/directory-submission.md).
+
+A public registry listing, plugin submission, and approved plugin publication are separate steps. Consult the submission document for verified status.
+
+## Quick setup
+
+### Codex
+
+Set `GIGGY_API_KEY` in your environment, then add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.giggy-speech]
+url = "https://giggy.ai/mcp"
+bearer_token_env_var = "GIGGY_API_KEY"
+```
+
+### Claude Code
+
+Set `GIGGY_API_KEY`, then configure:
+
+```json
+{
+  "mcpServers": {
+    "giggy-speech": {
+      "type": "http",
+      "url": "https://giggy.ai/mcp",
+      "headers": { "Authorization": "Bearer ${GIGGY_API_KEY}" }
+    }
+  }
+}
+```
+
+Keep API keys out of configuration files committed to source control.
 ## Remote MCP server
 
 ```text
@@ -318,3 +363,9 @@ Pricing:
 ```text
 https://giggy.ai/pricing
 ```
+
+
+Official SDK and runnable examples:
+
+- [Giggy JavaScript/TypeScript SDK](https://github.com/giggy-ai/giggy-js)
+- [Giggy integration examples](https://github.com/GRQDigitalCapital/giggy-examples)

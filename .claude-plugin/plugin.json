@@ -1,0 +1,14 @@
+{
+  "name": "giggy-speech",
+  "displayName": "Giggy Speech",
+  "version": "1.0.0",
+  "description": "Connect Giggy text-to-speech tools to Claude Code for voice-agent development.",
+  "author": { "name": "Giggy", "url": "https://giggy.ai" },
+  "homepage": "https://giggy.ai/docs/speech-api",
+  "repository": "https://github.com/GRQDigitalCapital/giggy-mcp",
+  "license": "ISC",
+  "keywords": ["text-to-speech", "tts", "voice-ai", "voice-agents", "mcp"],
+  "documentationUrl": "https://giggy.ai/docs/speech-api",
+  "supportUrl": "https://github.com/GRQDigitalCapital/giggy-mcp/issues",
+  "privacyPolicyUrl": "https://giggy.ai/privacy"
+}

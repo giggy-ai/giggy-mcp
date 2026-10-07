@@ -21,7 +21,7 @@ jobs:
           bash -n examples/list-tools.sh
           bash -n examples/list-voices.sh
 
-      - name: Validate MCP client JSON
+      - name: Validate MCP and plugin JSON
         run: |
           python -m json.tool examples/claude-code.mcp.json > /dev/null
           python -m json.tool examples/cursor.mcp.json > /dev/null
@@ -29,6 +29,34 @@ jobs:
           python -m json.tool examples/cline.mcp.json > /dev/null
           python -m json.tool examples/windsurf.mcp.json > /dev/null
           python -m json.tool server.json > /dev/null
+          python -m json.tool openai-plugin/plugin.json > /dev/null
+          python -m json.tool openai-plugin/mcp.json > /dev/null
+          python -m json.tool .claude-plugin/plugin.json > /dev/null
+          python -m json.tool .mcp.json > /dev/null
+
+      - name: Validate distribution configuration
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path(".")
+          registry = json.loads((root / "server.json").read_text())
+          openai = json.loads((root / "openai-plugin/plugin.json").read_text())
+          openai_mcp = json.loads((root / "openai-plugin/mcp.json").read_text())
+          claude = json.loads((root / ".claude-plugin/plugin.json").read_text())
+          claude_mcp = json.loads((root / ".mcp.json").read_text())
+          endpoint = "https://giggy.ai/mcp"
+
+          assert registry["remotes"][0]["url"] == endpoint
+          assert openai_mcp["mcpServers"]["giggy-speech"]["url"] == endpoint
+          assert claude_mcp["mcpServers"]["giggy-speech"]["url"] == endpoint
+          assert openai["name"] == "giggy-speech"
+          assert claude["name"] == "giggy-speech"
+          assert claude_mcp["mcpServers"]["giggy-speech"]["headers"]["Authorization"] == "Bearer ${GIGGY_API_KEY}"
+
+          print("Giggy distribution configuration valid.")
+          PY
 
       - name: Verify scripts are executable
         run: |
