@@ -1,0 +1,47 @@
+name: MCP Docs CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate shell scripts
+        run: |
+          bash -n examples/initialize.sh
+          bash -n examples/list-tools.sh
+          bash -n examples/list-voices.sh
+
+      - name: Validate Claude Code JSON
+        run: |
+          python -m json.tool examples/claude-code.mcp.json > /dev/null
+
+      - name: Verify scripts are executable
+        run: |
+          test -x examples/initialize.sh
+          test -x examples/list-tools.sh
+          test -x examples/list-voices.sh
+
+      - name: Fail if a likely real Giggy API key is committed
+        shell: bash
+        run: |
+          matches="$(
+            grep -R -n -E 'giggy_sk_[A-Za-z0-9_-]{16,}' . \
+              --exclude-dir=.git \
+              || true
+          )"
+
+          if [ -n "$matches" ]; then
+            printf '%s\n' "$matches"
+            echo "Potential Giggy API key found."
+            exit 1
+          fi
