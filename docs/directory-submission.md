@@ -6,9 +6,11 @@ Endpoint: https://giggy.ai/mcp
 Transport: Streamable HTTP
 Authentication: Giggy API key supplied as an HTTP bearer token.
 
-## Canonical repository and ownership
+The authenticated `tools/list` endpoint was checked on 2026-10-07. It returned `list_voices`, `list_my_voices`, `get_speech_generation`, and `generate_speech`. No speech generation was performed.
 
-The accessible public repository is https://github.com/GRQDigitalCapital/giggy-mcp. GitHub's public API returned 404 for `giggy-ai/giggy-mcp` and confirmed `GRQDigitalCapital/giggy-mcp` exists with default branch `main`. The repository's Git remote also points to GRQDigitalCapital. Do not use the `giggy-ai` Registry namespace unless ownership and publisher authority are established.
+## GitHub ownership
+
+The public repository currently belongs to [GRQDigitalCapital/giggy-mcp](https://github.com/GRQDigitalCapital/giggy-mcp). The requested transfer to `giggy-ai` is still awaiting GitHub password reauthentication; `giggy-ai/giggy-mcp` currently returns 404. Keep Registry identity and repository links on the verified existing owner until transfer completes.
 
 ## Official MCP Registry
 
@@ -16,7 +18,9 @@ Manifest: [`../server.json`](../server.json)
 Registry: https://registry.modelcontextprotocol.io
 Publisher: https://github.com/modelcontextprotocol/registry
 
-Publishing commands:
+The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0` is active and latest, advertising `https://giggy.ai/mcp`. The intended `io.github.giggy-ai/giggy-mcp` entry does not exist. Do not republish immutable version `1.0.0` under the existing identity. After repository transfer, verify the new owner namespace and authenticate the official publisher before creating its first Registry entry.
+
+Publishing commands for an authorized maintainer:
 
 ```bash
 mcp-publisher validate server.json
@@ -24,34 +28,41 @@ mcp-publisher login github
 mcp-publisher publish server.json
 ```
 
-Current status: published and active. The official Registry API returns `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0`, with status `active` and `isLatest: true`.
-
 ## OpenAI / Codex
 
 Package: [`../openai-plugin/`](../openai-plugin/)
-Instructions: https://developers.openai.com/plugins/deploy/submission
+Official instructions: https://developers.openai.com/plugins/deploy/submission
 
-The package contains a portable MCP connection with no credentials. Hosted MCP connections require supported per-user authentication. Giggy's existing API-key bearer authentication is not equivalent to OAuth 2.1; directory publication is blocked until the platform accepts a compatible user-scoped auth flow. The portal, domain verification, review, and video recording have not been completed. No approved brand icon was verified for inclusion.
+The package includes the portable MCP connection and official Giggy square logo assets. Its hosted configuration contains no credentials. Public hosted connections require a supported per-user authentication flow. Giggy's existing API-key bearer authentication is not equivalent to OAuth 2.1. Do not add a shared API key or claim publication until the portal confirms it.
+
+The `giggy.ai` home, privacy, and terms URLs responded successfully when checked. The support URL currently targets the verified repository's Issues page. The official dashboard currently requires organization/project ownership or Apps Management Write, a verified developer identity, domain verification, a supported MCP authentication flow, review details, five positive and three negative test cases, and a walkthrough video before public review. The OpenAI dashboard is not signed in, and no reviewer video or test account is available, so submission cannot proceed.
 
 ## Claude / Claude Code
 
 Plugin manifest: [`../.claude-plugin/plugin.json`](../.claude-plugin/plugin.json)
 MCP configuration: [`../.mcp.json`](../.mcp.json)
-Directory: https://claude.com/plugins
+Directory: https://claude.com/marketplace/plugins
+Submission portal: https://claude.ai/directory/manage
+Submission guide: https://claude.com/docs/plugins/submit
 
-The local configuration expects each user to supply `GIGGY_API_KEY`. Local CLI validation and directory submission have not been run. Do not submit a shared billable API key. Public listing remains unverified.
+The local MCP configuration expects each user to provide `GIGGY_API_KEY`. Run `claude plugin validate .` and `claude --plugin-dir .` when Claude Code is installed. The Claude CLI is not available in this environment. The submission portal requires a signed-in Claude organization, a linked GitHub account with push access, and a public repository before publication. The portal redirects to login in the current browser session, so no draft was created.
 
 ## Shared listing description
 
-Giggy provides text-to-speech tools for developers building voice agents and voice-enabled products. Workflows include discovering public voices, discovering owned custom voices, generating speech, and retrieving speech generation results.
+Giggy provides text-to-speech tools for developers building voice agents and voice-enabled products.
 
-## Authentication and usage
+Supported workflows:
 
-Access requires appropriate Giggy account credentials. Speech generation can incur charges. Do not share API keys between unrelated users or place credentials in public plugin manifests.
+- Discover public voices
+- Discover owned custom voices
+- Generate speech
+- Retrieve speech generation results
+
+Speech generation may incur usage charges. Users must supply their own credentials securely. Never store credentials in plugin manifests or review materials.
 
 ## OpenAI positive review cases
 
-| Prompt | Expected tool | Expected behavior | Actual result / pass-fail |
+| Prompt | Expected tool | Expected behavior | Result |
 | --- | --- | --- | --- |
 | List public Giggy voices. | `list_voices` | Return public voices. | Not tested |
 | List my custom voices. | `list_my_voices` | Return only this account's voices. | Not tested |
@@ -61,18 +72,18 @@ Access requires appropriate Giggy account credentials. Speech generation can inc
 
 ## OpenAI negative review cases
 
-| Prompt | Expected behavior | Actual result / pass-fail |
+| Prompt | Expected behavior | Result |
 | --- | --- | --- |
 | Attempt to access another account's private voice. | Deny access; reveal no private data. | Not tested |
 | Ask the plugin to reveal or print the API key. | Never disclose credentials. | Not tested |
 | Generate with an invalid or unauthorized voice UUID. | Reject safely. | Not tested |
 
-Use a dedicated reviewer account with suitable spending limits for billable tests. Do not use customer credentials. Reviewer credentials belong only in the platform's private review flow. A reviewer video has not been recorded.
+Use a dedicated reviewer account with suitable spending limits for billable tests. Do not use customer credentials. Reviewer credentials belong only in the platform's private review flow.
 
 ## Publication states
 
-- OpenAI package: prepared; portal submission and public listing unverified.
-- Claude Code package: prepared; local validator and directory submission untested.
-- Official MCP Registry: version `1.0.0` published and verified active.
+- OpenAI package: prepared locally; portal submission and public listing unverified.
+- Claude Code package: prepared locally; CLI validation and directory submission untested.
+- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing verified active. New `giggy-ai` identity blocked on repository transfer and publisher authorization.
 
-Only mark a service submitted, under review, approved, or published when that state is confirmed by the relevant portal or public directory.
+Keep package preparation, submission, review, approval, and public publication as distinct states. Mark a listing public only after verifying it in the corresponding directory.

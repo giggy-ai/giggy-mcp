@@ -38,6 +38,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import struct
           from pathlib import Path
 
           root = Path(".")
@@ -48,11 +49,22 @@ jobs:
           claude_mcp = json.loads((root / ".mcp.json").read_text())
           endpoint = "https://giggy.ai/mcp"
 
+          assert registry["repository"]["url"] == openai["repository"]
           assert registry["remotes"][0]["url"] == endpoint
           assert openai_mcp["mcpServers"]["giggy-speech"]["url"] == endpoint
           assert claude_mcp["mcpServers"]["giggy-speech"]["url"] == endpoint
           assert openai["name"] == "giggy-speech"
           assert claude["name"] == "giggy-speech"
+          assert openai_mcp["mcpServers"]["giggy-speech"]["type"] == "streamable-http"
+          assert "headers" not in openai_mcp["mcpServers"]["giggy-speech"]
+          assert Path("openai-plugin/assets/icon.png").is_file()
+          assert Path("openai-plugin/assets/logo.png").is_file()
+          for asset in ("openai-plugin/assets/icon.png", "openai-plugin/assets/logo.png"):
+              with open(asset, "rb") as image:
+                  header = image.read(24)
+              assert header[:8] == b"\x89PNG\r\n\x1a\n", f"{asset} is not PNG"
+              width, height = struct.unpack(">II", header[16:24])
+              assert width == height and width >= 48, f"{asset} must be square and at least 48px"
           assert claude_mcp["mcpServers"]["giggy-speech"]["headers"]["Authorization"] == "Bearer ${GIGGY_API_KEY}"
 
           print("Giggy distribution configuration valid.")

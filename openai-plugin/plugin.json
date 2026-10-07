@@ -12,6 +12,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Giggy Speech",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png",
         "shortDescription": "Text-to-speech for agents",
         "longDescription": "Use Giggy text-to-speech from AI agents and developer workflows. Discover available voices, generate speech using supported Giggy modes, and retrieve completed generation results. A Giggy account and authorized API access are required. Speech generation may incur usage charges.",
         "developerName": "Giggy",
