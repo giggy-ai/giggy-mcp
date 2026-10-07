@@ -35,7 +35,7 @@ Official instructions: https://developers.openai.com/plugins/deploy/submission
 
 The package includes the portable MCP connection and official Giggy square logo assets. Its hosted configuration contains no credentials. Public hosted connections require a supported per-user authentication flow. Giggy's existing API-key bearer authentication is not equivalent to OAuth 2.1. Do not add a shared API key or claim publication until the portal confirms it.
 
-The `giggy.ai` home, privacy, and terms URLs responded successfully when checked. The support URL currently targets the verified repository's Issues page. The official dashboard currently requires organization/project ownership or Apps Management Write, a verified developer identity, domain verification, a supported MCP authentication flow, review details, five positive and three negative test cases, and a walkthrough video before public review. The OpenAI dashboard is not signed in, and no reviewer video or test account is available, so submission cannot proceed.
+The `giggy.ai` home, privacy, and terms URLs responded successfully when checked. The support URL currently targets the verified repository's Issues page. The official dashboard requires organization/project ownership or Apps Management Write, a verified developer identity, domain verification, a supported MCP authentication flow, review details, five positive and three negative test cases, and a walkthrough video before public review. The dashboard is signed in, but the available verified developer identity is individual while the listing is branded Giggy. The business verification setup is open and awaits completion by the account owner. The ZIP has not been uploaded, and no reviewer video or dedicated test account is available.
 
 ## Claude / Claude Code
 
@@ -82,7 +82,7 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 
 ## Publication states
 
-- OpenAI package: prepared locally; portal submission and public listing unverified.
+- OpenAI package: prepared locally; portal sign-in confirmed; upload pending business identity verification, user-auth compatibility, and review materials.
 - Claude Code package: prepared locally; CLI validation passed; directory submission blocked by the current plan.
 - Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing verified active. New `giggy-ai` identity blocked on repository transfer and publisher authorization.
 
