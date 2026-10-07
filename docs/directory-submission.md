@@ -45,7 +45,7 @@ Directory: https://claude.com/marketplace/plugins
 Submission portal: https://claude.ai/directory/manage
 Submission guide: https://claude.com/docs/plugins/submit
 
-The local MCP configuration expects each user to provide `GIGGY_API_KEY`. Run `claude plugin validate .` and `claude --plugin-dir .` when Claude Code is installed. The Claude CLI is not available in this environment. The submission portal requires a signed-in Claude organization, a linked GitHub account with push access, and a public repository before publication. The portal redirects to login in the current browser session, so no draft was created.
+The local MCP configuration expects each user to provide `GIGGY_API_KEY`. `claude plugin validate .` passed on 2026-10-07. The submission portal is signed in, but it reports that directory submissions require a Pro, Max, Team, or Enterprise plan; this account currently has the Free plan. After an eligible plan is available, the portal also requires a linked GitHub account with push access and a public repository before publication. No draft was created.
 
 ## Shared listing description
 
@@ -83,7 +83,7 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 ## Publication states
 
 - OpenAI package: prepared locally; portal submission and public listing unverified.
-- Claude Code package: prepared locally; CLI validation and directory submission untested.
+- Claude Code package: prepared locally; CLI validation passed; directory submission blocked by the current plan.
 - Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing verified active. New `giggy-ai` identity blocked on repository transfer and publisher authorization.
 
 Keep package preparation, submission, review, approval, and public publication as distinct states. Mark a listing public only after verifying it in the corresponding directory.
