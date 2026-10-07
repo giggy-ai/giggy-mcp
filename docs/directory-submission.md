@@ -24,7 +24,7 @@ mcp-publisher login github
 mcp-publisher publish server.json
 ```
 
-Current status: prepared, publication not verified. No official Registry record was confirmed during this run. Check the exact server name and version with the Registry API before publishing; Registry publication requires authorized publisher login.
+Current status: published and active. The official Registry API returns `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0`, with status `active` and `isLatest: true`.
 
 ## OpenAI / Codex
 
@@ -73,6 +73,6 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 
 - OpenAI package: prepared; portal submission and public listing unverified.
 - Claude Code package: prepared; local validator and directory submission untested.
-- Official MCP Registry: prepared; publication unverified.
+- Official MCP Registry: version `1.0.0` published and verified active.
 
 Only mark a service submitted, under review, approved, or published when that state is confirmed by the relevant portal or public directory.
