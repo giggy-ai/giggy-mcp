@@ -5,7 +5,7 @@
   "description": "Use Giggy text-to-speech from MCP-compatible AI agents and coding tools.",
   "websiteUrl": "https://giggy.ai/docs/speech-api",
   "repository": {
-    "url": "https://github.com/giggy-ai/giggy-mcp",
+    "url": "https://github.com/GRQDigitalCapital/giggy-mcp",
     "source": "github"
   },
   "version": "1.0.0",

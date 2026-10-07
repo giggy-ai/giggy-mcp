@@ -1,6 +1,6 @@
 # Giggy MCP — text-to-speech for AI agents
 
-[![MCP Docs CI](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml)
+[![MCP Docs CI](https://github.com/GRQDigitalCapital/giggy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/GRQDigitalCapital/giggy-mcp/actions/workflows/ci.yml)
 
 Giggy MCP is a remote Streamable HTTP Model Context Protocol (MCP) server for using Giggy text-to-speech from coding agents and AI clients.
 
@@ -310,7 +310,7 @@ https://giggy.ai/v1/openapi.json
 Runnable examples:
 
 ```text
-https://github.com/giggy-ai/giggy-examples
+https://github.com/GRQDigitalCapital/giggy-examples
 ```
 
 Pricing:
