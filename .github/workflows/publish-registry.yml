@@ -1,4 +1,4 @@
-name: Publish Giggy MCP Registry entry
+name: Validate Giggy MCP Registry metadata
 
 on:
   push:
@@ -9,11 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  publish:
+  validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -22,7 +19,5 @@ jobs:
           curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
       - name: Validate server metadata
         run: ./mcp-publisher validate server.json
-      - name: Authenticate with GitHub OIDC
-        run: ./mcp-publisher login github-oidc
-      - name: Publish server metadata
-        run: ./mcp-publisher publish server.json
+      - name: Explain publishing identity
+        run: echo "Validation only. Publish manually with GitHub OAuth as the owner of the existing Registry namespace."

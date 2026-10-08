@@ -18,13 +18,13 @@ Manifest: [`../server.json`](../server.json)
 Registry: https://registry.modelcontextprotocol.io
 Publisher: https://github.com/modelcontextprotocol/registry
 
-The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0` remains active and latest. The canonical manifest registers `io.github.giggy-ai/giggy-mcp` version `1.0.1`, but the publication attempt on 2026-10-08 was rejected because `https://giggy.ai/mcp` is already used by the old listing. The Registry treats server names as immutable; the current publisher cannot create a second listing for the same remote URL.
+The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.1` is active and latest. Its repository URL now points to the transferred canonical repository. Registry names are immutable, and `https://giggy.ai/mcp` cannot be registered under a second name. Registry publishing must be authenticated as the original namespace owner; GitHub Actions OIDC from `giggy-ai/giggy-mcp` only grants the `io.github.giggy-ai/*` namespace.
 
-Publishing commands for an authorized maintainer:
+To publish an update, authenticate with GitHub as the owner of the existing `GRQDigitalCapital` namespace, then run:
 
 ```bash
 mcp-publisher validate server.json
-mcp-publisher login github-oidc
+mcp-publisher login github
 mcp-publisher publish server.json
 ```
 
@@ -84,7 +84,7 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 
 - OpenAI package: prepared locally; portal sign-in confirmed; upload pending business identity verification, user-auth compatibility, and review materials.
 - Claude Code package: prepared locally; CLI validation passed; directory submission blocked by the current plan.
-- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing remains active. Canonical `io.github.giggy-ai/giggy-mcp` v1.0.1 passed manifest validation and OIDC authentication, but publication was rejected because the remote URL is already registered to the old identifier. Registry maintainer migration or removal is required before a canonical listing can be created. See the Registry's [server-name immutability guidance](https://github.com/modelcontextprotocol/registry/blob/main/docs/administration/admin-operations.md).
+- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.1 listing is active and points to `giggy-ai/giggy-mcp`. The attempted second listing was rejected because the endpoint is already registered. Future publishes use GitHub OAuth for the original namespace owner; the tag workflow validates metadata but does not publish through the mismatched organization OIDC identity. A Registry-maintainer migration is needed to change the immutable Registry ID. See the Registry's [server-name immutability guidance](https://github.com/modelcontextprotocol/registry/blob/main/docs/administration/admin-operations.md).
 
 Keep package preparation, submission, review, approval, and public publication as distinct states. Mark a listing public only after verifying it in the corresponding directory.
 
