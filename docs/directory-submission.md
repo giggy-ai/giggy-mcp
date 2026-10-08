@@ -18,7 +18,7 @@ Manifest: [`../server.json`](../server.json)
 Registry: https://registry.modelcontextprotocol.io
 Publisher: https://github.com/modelcontextprotocol/registry
 
-The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0` remains active and latest. The canonical manifest now registers `io.github.giggy-ai/giggy-mcp` version `1.0.1`; the old identifier is retained as a historical listing.
+The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0` remains active and latest. The canonical manifest registers `io.github.giggy-ai/giggy-mcp` version `1.0.1`, but the publication attempt on 2026-10-08 was rejected because `https://giggy.ai/mcp` is already used by the old listing. The Registry treats server names as immutable; the current publisher cannot create a second listing for the same remote URL.
 
 Publishing commands for an authorized maintainer:
 
@@ -84,7 +84,7 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 
 - OpenAI package: prepared locally; portal sign-in confirmed; upload pending business identity verification, user-auth compatibility, and review materials.
 - Claude Code package: prepared locally; CLI validation passed; directory submission blocked by the current plan.
-- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing verified active. Canonical `io.github.giggy-ai/giggy-mcp` v1.0.1 manifest is prepared and awaits the tagged OIDC publication.
+- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing remains active. Canonical `io.github.giggy-ai/giggy-mcp` v1.0.1 passed manifest validation and OIDC authentication, but publication was rejected because the remote URL is already registered to the old identifier. Registry maintainer migration or removal is required before a canonical listing can be created. See the Registry's [server-name immutability guidance](https://github.com/modelcontextprotocol/registry/blob/main/docs/administration/admin-operations.md).
 
 Keep package preparation, submission, review, approval, and public publication as distinct states. Mark a listing public only after verifying it in the corresponding directory.
 
