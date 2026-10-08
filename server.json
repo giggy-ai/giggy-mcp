@@ -1,14 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.GRQDigitalCapital/giggy-mcp",
+  "name": "io.github.giggy-ai/giggy-mcp",
   "title": "Giggy Speech MCP",
   "description": "Giggy speech tools for AI agents: discover voices and generate text-to-speech.",
   "websiteUrl": "https://giggy.ai/docs/speech-api",
   "repository": {
-    "url": "https://github.com/GRQDigitalCapital/giggy-mcp",
+    "url": "https://github.com/giggy-ai/giggy-mcp",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "remotes": [
     {
       "type": "streamable-http",

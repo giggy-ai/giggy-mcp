@@ -32,6 +32,7 @@ jobs:
           python -m json.tool openai-plugin/plugin.json > /dev/null
           python -m json.tool openai-plugin/mcp.json > /dev/null
           python -m json.tool .claude-plugin/plugin.json > /dev/null
+          python -m json.tool .claude-plugin/marketplace.json > /dev/null
           python -m json.tool .mcp.json > /dev/null
 
       - name: Validate distribution configuration
@@ -46,6 +47,9 @@ jobs:
           openai = json.loads((root / "openai-plugin/plugin.json").read_text())
           openai_mcp = json.loads((root / "openai-plugin/mcp.json").read_text())
           claude = json.loads((root / ".claude-plugin/plugin.json").read_text())
+          marketplace = json.loads(
+              (root / ".claude-plugin/marketplace.json").read_text()
+          )
           claude_mcp = json.loads((root / ".mcp.json").read_text())
           endpoint = "https://giggy.ai/mcp"
 
@@ -66,6 +70,10 @@ jobs:
               width, height = struct.unpack(">II", header[16:24])
               assert width == height and width >= 48, f"{asset} must be square and at least 48px"
           assert claude_mcp["mcpServers"]["giggy-speech"]["headers"]["Authorization"] == "Bearer ${GIGGY_API_KEY}"
+          assert marketplace["name"] == "giggy"
+          assert marketplace["plugins"][0]["name"] == claude["name"]
+          assert marketplace["plugins"][0]["source"] == "./"
+          assert (root / "skills/giggy-speech/SKILL.md").is_file()
 
           print("Giggy distribution configuration valid.")
           PY

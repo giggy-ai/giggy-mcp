@@ -10,7 +10,7 @@ The authenticated `tools/list` endpoint was checked on 2026-10-07. It returned `
 
 ## GitHub ownership
 
-The public repository currently belongs to [GRQDigitalCapital/giggy-mcp](https://github.com/GRQDigitalCapital/giggy-mcp). The requested transfer to `giggy-ai` is still awaiting GitHub password reauthentication; `giggy-ai/giggy-mcp` currently returns 404. Keep Registry identity and repository links on the verified existing owner until transfer completes.
+The public repository is [giggy-ai/giggy-mcp](https://github.com/giggy-ai/giggy-mcp). The former owner remains in the Registry identity for the existing listing; repository transfers do not rewrite published Registry identifiers.
 
 ## Official MCP Registry
 
@@ -18,13 +18,13 @@ Manifest: [`../server.json`](../server.json)
 Registry: https://registry.modelcontextprotocol.io
 Publisher: https://github.com/modelcontextprotocol/registry
 
-The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0` is active and latest, advertising `https://giggy.ai/mcp`. The intended `io.github.giggy-ai/giggy-mcp` entry does not exist. Do not republish immutable version `1.0.0` under the existing identity. After repository transfer, verify the new owner namespace and authenticate the official publisher before creating its first Registry entry.
+The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.0` remains active and latest. The canonical manifest now registers `io.github.giggy-ai/giggy-mcp` version `1.0.1`; the old identifier is retained as a historical listing.
 
 Publishing commands for an authorized maintainer:
 
 ```bash
 mcp-publisher validate server.json
-mcp-publisher login github
+mcp-publisher login github-oidc
 mcp-publisher publish server.json
 ```
 
@@ -84,6 +84,24 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 
 - OpenAI package: prepared locally; portal sign-in confirmed; upload pending business identity verification, user-auth compatibility, and review materials.
 - Claude Code package: prepared locally; CLI validation passed; directory submission blocked by the current plan.
-- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing verified active. New `giggy-ai` identity blocked on repository transfer and publisher authorization.
+- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.0 listing verified active. Canonical `io.github.giggy-ai/giggy-mcp` v1.0.1 manifest is prepared and awaits the tagged OIDC publication.
 
 Keep package preparation, submission, review, approval, and public publication as distinct states. Mark a listing public only after verifying it in the corresponding directory.
+
+## Additional discovery targets
+
+- **skills.sh:** Verify that `npx skills add` detects
+  `giggy-speech`. Discoverability depends on the public
+  skill being installable and indexed.
+- **Smithery:** Listing pending. Check requirements
+  for an authenticated remote MCP server.
+  https://smithery.ai
+- **Glama:** Listing pending. Submit the existing
+  remote MCP endpoint as a connector.
+  https://glama.ai/mcp
+- **Claude directory:** Submit the validated plugin
+  through the developer portal after authenticating.
+  https://claude.ai/directory/manage
+
+Do not claim submitted, approved, or published status
+without verification.

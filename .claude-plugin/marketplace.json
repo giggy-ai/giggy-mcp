@@ -1,0 +1,12 @@
+{
+  "name": "giggy",
+  "owner": {
+    "name": "Giggy"
+  },
+  "plugins": [
+    {
+      "name": "giggy-speech",
+      "source": "./"
+    }
+  ]
+}

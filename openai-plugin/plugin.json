@@ -5,7 +5,7 @@
   "description": "Giggy text-to-speech tools for AI coding agents and voice-enabled products.",
   "author": { "name": "Giggy", "url": "https://giggy.ai" },
   "homepage": "https://giggy.ai/docs/speech-api",
-  "repository": "https://github.com/GRQDigitalCapital/giggy-mcp",
+  "repository": "https://github.com/giggy-ai/giggy-mcp",
   "license": "ISC",
   "keywords": ["text-to-speech", "tts", "voice-ai", "voice-agents", "speech-generation", "mcp"],
   "extensions": {
@@ -20,7 +20,7 @@
         "category": "Developer Tools",
         "capabilities": ["Discover available speech voices", "Generate text-to-speech audio", "Retrieve speech generation results"],
         "websiteURL": "https://giggy.ai",
-        "supportURL": "https://github.com/GRQDigitalCapital/giggy-mcp/issues",
+        "supportURL": "https://github.com/giggy-ai/giggy-mcp/issues",
         "privacyPolicyURL": "https://giggy.ai/privacy",
         "termsOfServiceURL": "https://giggy.ai/terms",
         "defaultPrompt": ["Find available voices for a voice assistant.", "Generate a short speech sample with Giggy.", "Check the status of my Giggy speech generation."]

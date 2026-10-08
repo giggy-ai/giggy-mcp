@@ -1,6 +1,6 @@
 # Giggy MCP — text-to-speech for AI agents
 
-[![MCP Docs CI](https://github.com/GRQDigitalCapital/giggy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/GRQDigitalCapital/giggy-mcp/actions/workflows/ci.yml)
+[![MCP Docs CI](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml)
 
 Giggy MCP is a remote Streamable HTTP Model Context Protocol (MCP) server for using Giggy text-to-speech from coding agents and AI clients.
 
@@ -21,6 +21,41 @@ This repository contains the publication artifacts for:
 See [directory submission status and requirements](docs/directory-submission.md).
 
 A public registry listing, plugin submission, and approved plugin publication are separate steps. Consult the submission document for verified status.
+
+## Install for AI coding agents
+
+### Agent Skill — Codex and Claude Code
+
+```bash
+npx skills add giggy-ai/giggy-mcp --skill giggy-speech
+```
+
+The skill provides Giggy speech-generation instructions.
+An MCP connection is still required.
+
+### Claude Code plugin
+
+```bash
+claude plugin marketplace add giggy-ai/giggy-mcp
+claude plugin install giggy-speech@giggy
+```
+
+### Codex
+
+Follow the existing Codex MCP setup below.
+
+### Example prompt
+
+"Use Giggy to list available English voices, generate a
+short Batch speech sample saying 'Hello from Giggy',
+and return the completed audio URL."
+
+## Discover Giggy
+
+- [Official MCP Registry](https://registry.modelcontextprotocol.io)
+- [Speech API docs](https://giggy.ai/docs/speech-api)
+- [Runnable examples](https://github.com/giggy-ai/giggy-examples)
+- [Directory submission status](docs/directory-submission.md)
 
 ## Quick setup
 
@@ -355,7 +390,7 @@ https://giggy.ai/v1/openapi.json
 Runnable examples:
 
 ```text
-https://github.com/GRQDigitalCapital/giggy-examples
+https://github.com/giggy-ai/giggy-examples
 ```
 
 Pricing:
@@ -368,4 +403,4 @@ https://giggy.ai/pricing
 Official SDK and runnable examples:
 
 - [Giggy JavaScript/TypeScript SDK](https://github.com/giggy-ai/giggy-js)
-- [Giggy integration examples](https://github.com/GRQDigitalCapital/giggy-examples)
+- [Giggy integration examples](https://github.com/giggy-ai/giggy-examples)
