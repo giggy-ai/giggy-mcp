@@ -1,10 +1,14 @@
 # Giggy MCP — text-to-speech for AI agents
 
+For first speech, create your own account/key, confirm `list_voices`, select an exact returned UUID, generate once and poll the returned generation ID. Success means durable `completed` status with a result URL. MCP provides durable results, not real-time audio playback. Reuse the [voice sandbox](https://github.com/giggy-ai/giggy-voice-agent) for conversations or [pipecat-giggy](https://github.com/giggy-ai/pipecat-giggy) for native pipelines. Consult current API documentation and pricing before making a generation request.
+
 [![MCP Docs CI](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml)
 
 Giggy MCP is a remote Streamable HTTP Model Context Protocol (MCP) server for using Giggy text-to-speech from coding agents and AI clients.
 
 It provides Giggy speech tools to Codex, Claude Code, Cursor, VS Code, Cline, Windsurf-compatible clients, and other MCP clients.
+
+[Create a Giggy account](https://giggy.ai/?login=1&utm_source=github&utm_medium=referral&utm_campaign=developer_onboarding&utm_content=giggy-mcp_readme) · [Speech API guide](https://giggy.ai/docs/speech-api?utm_source=github&utm_medium=referral&utm_campaign=developer_onboarding&utm_content=giggy-mcp_docs) · [Browser voice sandbox](https://github.com/giggy-ai/giggy-voice-agent)
 
 ## MCP registry and plugin directories
 
