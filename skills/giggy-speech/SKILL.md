@@ -1,18 +1,18 @@
 ---
 name: giggy-speech
-description: Generate text-to-speech, MP3 voiceovers, narration, and multilingual speech using Giggy MCP tools in Codex, Claude Code, or other AI agents.
+description: Generate text-to-speech and transcribe recorded audio using authenticated Giggy MCP tools in Codex, Claude Code, or other AI agents.
 ---
 
 # Giggy Speech
 
-Use Giggy's existing MCP tools to generate audio from text.
+Use Giggy's existing MCP tools to generate audio from text or transcribe an authorised recording.
 
 ## When to use
 
 Use this skill when the user requests speech synthesis,
-narration, a voiceover, or spoken audio from text.
+narration, a voiceover, spoken audio from text, or recorded-audio transcription.
 
-## Workflow
+## Text-to-speech workflow
 
 1. Check that Giggy MCP tools are available.
 2. If not configured, direct the user to:
@@ -28,6 +28,16 @@ narration, a voiceover, or spoken audio from text.
 10. When completed, return `generation.result.url`.
 
 Do not resubmit generation while polling.
+
+## Recorded-transcription workflow
+
+1. Check the connected server's `transcribe_audio` schema for supported inputs, modes and limits. Do not invent parameters or assume a local path is accessible to the remote server.
+2. Prepare the user's authorised recording according to that schema. Explain paid usage before invoking a paid mode.
+3. Call `transcribe_audio` once with a fresh idempotency key for the intended operation; retain the returned generation UUID.
+4. Poll `get_speech_generation` for that UUID without resubmitting. Admission is not the final transcript.
+5. After durable completion, retrieve the canonical transcript result using the returned result metadata. Do not fabricate transcript text or claim completion after an error.
+
+MCP does not capture microphones or transport live PCM frames. For that workflow use the existing SDK guides at https://giggy.ai/docs/speech-api#api-developer-tools. Do not claim diarization, word timestamps, sentiment analysis or PII redaction from the current transcript contract.
 
 ## Rules
 

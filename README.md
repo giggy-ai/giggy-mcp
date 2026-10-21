@@ -1,8 +1,8 @@
-# Giggy MCP — text-to-speech for AI agents
+# Giggy MCP — text-to-speech and recorded transcription for AI agents
 
 [![MCP Docs CI](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/giggy-ai/giggy-mcp/actions/workflows/ci.yml)
 
-Giggy MCP is a remote Streamable HTTP Model Context Protocol (MCP) server for using Giggy text-to-speech from coding agents and AI clients.
+Giggy MCP is a remote Streamable HTTP Model Context Protocol (MCP) server for using Giggy text-to-speech and recorded-audio speech-to-text from coding agents and AI clients.
 
 It provides Giggy speech tools to Codex, Claude Code, Cursor, VS Code, Cline, Windsurf-compatible clients, and other MCP clients.
 
@@ -30,7 +30,7 @@ A public registry listing, plugin submission, and approved plugin publication ar
 npx skills add giggy-ai/giggy-mcp --skill giggy-speech
 ```
 
-The skill provides Giggy speech-generation instructions.
+The skill provides Giggy speech-generation and recorded-transcription instructions.
 An MCP connection is still required.
 
 ### Claude Code plugin
@@ -131,9 +131,18 @@ list_voices
 list_my_voices
 generate_speech
 get_speech_generation
+transcribe_audio
 ```
 
-The MCP server may expose other Giggy tools outside the speech scope of this repository.
+Read the connected server's tool schemas before calling these tools. Recorded transcription is asynchronous admission, followed by durable status/result retrieval. MCP does not transport live microphone frames; use the [Python](https://github.com/giggy-ai/giggy-python#live-microphone-pcm-session) or [Node.js SDK](https://github.com/giggy-ai/giggy-js#live-microphone-pcm-session) for that workflow.
+
+## Transcribe recorded audio with a coding assistant
+
+Connect MCP with your own Giggy API key, then ask: "Use Giggy to transcribe my authorised recording with the available recorded-audio tool, retain the generation UUID, and retrieve the completed transcript."
+
+The assistant must inspect `transcribe_audio`'s current schema, prepare the supported input and use one idempotency key per intended operation. Poll `get_speech_generation` without resubmitting. Retrieve the canonical transcript only after completion; do not treat admission as final text. Check [pricing and limits](https://giggy.ai/pricing) before paid usage. The current transcript contract does not provide speaker diarization, word timestamps, sentiment or PII redaction.
+
+For SDKs, Pipecat, n8n and learning resources, use the [developer tool guide](https://giggy.ai/docs/speech-api#api-developer-tools).
 
 ## Recommended speech workflow
 

@@ -6,7 +6,7 @@ Endpoint: https://giggy.ai/mcp
 Transport: Streamable HTTP
 Authentication: Giggy API key supplied as an HTTP bearer token.
 
-The authenticated `tools/list` endpoint was checked on 2026-10-07. It returned `list_voices`, `list_my_voices`, `get_speech_generation`, and `generate_speech`. No speech generation was performed.
+The authenticated `tools/list` endpoint was checked on 2026-10-13. It returned `list_voices`, `list_my_voices`, `get_speech_generation`, `generate_speech`, and `transcribe_audio`. This discovery check performed no generation. Recorded transcription uses asynchronous admission and durable result retrieval; MCP is not the live microphone transport.
 
 ## GitHub ownership
 
@@ -18,7 +18,7 @@ Manifest: [`../server.json`](../server.json)
 Registry: https://registry.modelcontextprotocol.io
 Publisher: https://github.com/modelcontextprotocol/registry
 
-The Registry API confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.1` is active and latest. Its repository URL now points to the transferred canonical repository. Registry names are immutable, and `https://giggy.ai/mcp` cannot be registered under a second name. Registry publishing must be authenticated as the original namespace owner; GitHub Actions OIDC from `giggy-ai/giggy-mcp` only grants the `io.github.giggy-ai/*` namespace.
+The Registry API checked on October 13 confirms that `io.github.GRQDigitalCapital/giggy-mcp` version `1.0.2` is active and latest. Its repository URL points to the transferred canonical repository. Registry names are immutable, and `https://giggy.ai/mcp` cannot be registered under a second name. Registry publishing must be authenticated as the original namespace owner; GitHub Actions OIDC from `giggy-ai/giggy-mcp` only grants the `io.github.giggy-ai/*` namespace. Local description edits do not update the published immutable version; publish a new version through the existing release process when authorised.
 
 To publish an update, authenticate with GitHub as the owner of the existing `GRQDigitalCapital` namespace, then run:
 
@@ -49,13 +49,14 @@ The local MCP configuration expects each user to provide `GIGGY_API_KEY`. `claud
 
 ## Shared listing description
 
-Giggy provides text-to-speech tools for developers building voice agents and voice-enabled products.
+Giggy provides text-to-speech and recorded-audio transcription tools for developers building voice agents and voice-enabled products.
 
 Supported workflows:
 
 - Discover public voices
 - Discover owned custom voices
 - Generate speech
+- Transcribe authorised recorded audio
 - Retrieve speech generation results
 
 Speech generation may incur usage charges. Users must supply their own credentials securely. Never store credentials in plugin manifests or review materials.
@@ -84,7 +85,7 @@ Use a dedicated reviewer account with suitable spending limits for billable test
 
 - OpenAI package: prepared locally; portal sign-in confirmed; upload pending business identity verification, user-auth compatibility, and review materials.
 - Claude Code package: prepared locally; CLI validation passed; directory submission blocked by the current plan.
-- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.1 listing is active and points to `giggy-ai/giggy-mcp`. The attempted second listing was rejected because the endpoint is already registered. Future publishes use GitHub OAuth for the original namespace owner; the tag workflow validates metadata but does not publish through the mismatched organization OIDC identity. A Registry-maintainer migration is needed to change the immutable Registry ID. See the Registry's [server-name immutability guidance](https://github.com/modelcontextprotocol/registry/blob/main/docs/administration/admin-operations.md).
+- Official MCP Registry: existing `io.github.GRQDigitalCapital/giggy-mcp` v1.0.2 listing is active and points to `giggy-ai/giggy-mcp`. The attempted second listing was rejected because the endpoint is already registered. Future publishes use GitHub OAuth for the original namespace owner; the tag workflow validates metadata but does not publish through the mismatched organization OIDC identity. A Registry-maintainer migration is needed to change the immutable Registry ID. See the Registry's [server-name immutability guidance](https://github.com/modelcontextprotocol/registry/blob/main/docs/administration/admin-operations.md).
 
 Keep package preparation, submission, review, approval, and public publication as distinct states. Mark a listing public only after verifying it in the corresponding directory.
 
