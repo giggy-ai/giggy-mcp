@@ -372,7 +372,7 @@ It does not return live MP3 or PCM audio bytes through MCP.
 For progressive PCM audio, use:
 
 ```text
-POST https://giggy.ai/v1/text-to-speech
+POST https://api.giggy.ai/v1/text-to-speech
 ```
 
 with:
@@ -393,7 +393,7 @@ https://giggy.ai/docs/speech-api
 OpenAPI:
 
 ```text
-https://giggy.ai/v1/openapi.json
+https://api.giggy.ai/v1/openapi.json
 ```
 
 Runnable examples:
